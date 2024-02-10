@@ -9,8 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: "var(--font-aboreto)",
-        body: "var(--font-poppins)",
+        heading: ["Aboreto", "cursive"],
+        body: ["Poppins", "sans-serif"],
+        // heading: "var(--font-aboreto)",
+        // body: "var(--font-poppins)",
       },
     },
   },
