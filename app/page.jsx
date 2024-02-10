@@ -1,19 +1,15 @@
 // import { getPageByUri } from "utils/getPageByUri";
 // import { getPageSeo } from "utils/getPageSeo";
 import { BlockRenderer } from "components/BlockRenderer";
-
-import { getPage } from "../utils/getPage";
+import { getHomePage } from "../utils/getHomePage";
+import { getPageByUri } from "../utils/getPageByUri";
+import { notFound } from "next/navigation";
 
 export default async function Page() {
-  const data = await getPage("/");
+  const data = await getHomePage("/");
 
+  // if (!data) {
+  //   return notFound();
+  // }
   return <BlockRenderer blocks={data} />;
 }
-
-// export async function generateMetadata() {
-//   const seo = await getPageSeo("/");
-//   return {
-//     title: seo.title,
-//     description: seo.metaDesc,
-//   };
-// }

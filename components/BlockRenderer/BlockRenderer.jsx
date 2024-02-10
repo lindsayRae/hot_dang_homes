@@ -6,18 +6,16 @@
 // import { FormspreeForm } from "components/FormspreeForm";
 // import { Gallery } from "components/Gallery";
 import { Heading } from "components/Heading";
-// import { Paragraph } from "components/Paragraph";
+import { Paragraph } from "components/Paragraph";
 // import { PropertyFeatures } from "components/PropertyFeatures";
 // import { PropertySearch } from "components/PropertySearch";
 // import { TickItem } from "components/TickItem";
 // import Image from "next/image";
-// import { theme } from "theme";
+import { theme } from "theme";
 
 import { Cover } from "components/Cover";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.log("----- blocks: ", blocks);
-
   return blocks.map((block) => {
     switch (block.name) {
       // case "acf/propertyfeatures": {
@@ -72,20 +70,19 @@ export const BlockRenderer = ({ blocks }) => {
       //     //   />
       //   );
       // }
-      // case "core/paragraph": {
-      //   return (
-      //     <p>Paragraph</p>
-      //     //   <Paragraph
-      //     //     key={block.id}
-      //     //     textAlign={block.attributes.align}
-      //     //     content={block.attributes.content}
-      //     //     textColor={
-      //     //       theme[block.attributes.textColor] ||
-      //     //       block.attributes.style?.color?.text
-      //     //     }
-      //     //   />
-      //   );
-      // }
+      case "core/paragraph": {
+        return (
+          <Paragraph
+            key={block.id}
+            textAlign={block.attributes.textAlign}
+            content={block.attributes.content}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+          />
+        );
+      }
       // case "core/post-title":
       case "core/heading": {
         return (
