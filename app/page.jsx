@@ -8,8 +8,12 @@ import { notFound } from "next/navigation";
 export default async function Page() {
   const data = await getHomePage("/");
 
-  // if (!data) {
-  //   return notFound();
-  // }
-  return <BlockRenderer blocks={data} />;
+  if (!data) {
+    return notFound();
+  }
+  return (
+    <div>
+      <BlockRenderer blocks={data} />
+    </div>
+  );
 }
