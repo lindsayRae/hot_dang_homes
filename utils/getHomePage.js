@@ -1,17 +1,22 @@
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
+import { mapMainMenuItems } from "./mapMainMenuItems";
+
 export const getHomePage = async (uri) => {
-  //! why does uri not work?
-  console.log("**", uri);
   const params = {
     query: `query PageQuery($uri: String!)  {
       nodeByUri(uri: $uri) {
-        id
         ... on Page {
           id
           title
           blocks(postTemplate: false)
         }
+        ... on Property {
+          id
+          title
+          blocks(postTemplate: false)
+        }
       }
+      
     }
   `,
     variables: {
@@ -28,10 +33,13 @@ export const getHomePage = async (uri) => {
   });
   const { data } = await response.json();
   console.log("--- data from GET HOME: ", data);
+
   // if (!data) {
   //   return null;
   // }
 
   const blocks = cleanAndTransformBlocks(data?.nodeByUri?.blocks || []);
-  return blocks;
+  return {
+    blocks,
+  };
 };
