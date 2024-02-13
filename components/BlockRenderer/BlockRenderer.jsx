@@ -1,5 +1,5 @@
 "use client";
-// import { CallToActionButton } from "components/CallToActionButton";
+import { CallToActionButton } from "components/CallToActionButton";
 // import { Column } from "components/Column";
 // import { Columns } from "components/Columns";
 
@@ -16,6 +16,8 @@ import { theme } from "theme";
 import { Cover } from "components/Cover";
 
 export const BlockRenderer = ({ blocks }) => {
+  //console.log("***** in blocks: ", blocks);
+
   return blocks.map((block) => {
     switch (block.name) {
       // case "acf/propertyfeatures": {
@@ -59,17 +61,16 @@ export const BlockRenderer = ({ blocks }) => {
       //     //   />
       //   );
       // }
-      // case "acf/ctabutton": {
-      //   return (
-      //     <p>Call to Action</p>
-      //     //   <CallToActionButton
-      //     //     key={block.id}
-      //     //     buttonLabel={block.attributes.data.label}
-      //     //     destination={block.attributes.data.destination || "/"}
-      //     //     align={block.attributes.data.align}
-      //     //   />
-      //   );
-      // }
+      case "acf/ctabutton": {
+        return (
+          <CallToActionButton
+            key={block.id}
+            buttonLabel={block.attributes.data.label}
+            destination={block.attributes.data.destination || "/"}
+            align={block.attributes.data.align}
+          />
+        );
+      }
       case "core/paragraph": {
         return (
           <Paragraph
@@ -168,6 +169,7 @@ export const BlockRenderer = ({ blocks }) => {
       //   );
       // }
       default: {
+        console.log("UNKNOWN: ", block);
         return null;
       }
     }

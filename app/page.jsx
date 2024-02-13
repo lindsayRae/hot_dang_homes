@@ -13,7 +13,7 @@ export default async function Page() {
   }
   return (
     <div>
-      <BlockRenderer blocks={data} />
+      <BlockRenderer blocks={data.blocks} />
     </div>
   );
 }
