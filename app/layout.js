@@ -5,7 +5,7 @@ config.autoAddCss = false;
 import { Poppins, Aboreto } from "next/font/google";
 import "../styles/globals.css";
 import { MainMenu } from "components/MainMenu";
-
+import { getMenu } from "utils/getMenu";
 //export const dynamic = "force-dynamic";
 
 const poppins = Poppins({
@@ -27,13 +27,16 @@ export const metadata = {
   description: "Hot Dang Homes Course",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const data = await getMenu();
+
   return (
     <html lang="en" className={`${poppins.variable} ${aboreto.variable}`}>
       <body className="font-body">
         <MainMenu
-          callToActionLabel="Get in touch"
-          callToActionDestination="/contact"
+          items={data.mainMenuItems}
+          callToActionLabel={data.callToActionLabel}
+          callToActionDestination={data.callToActionDestination}
         />
         {children}
       </body>
