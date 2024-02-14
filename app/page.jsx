@@ -1,12 +1,12 @@
 // import { getPageByUri } from "utils/getPageByUri";
 // import { getPageSeo } from "utils/getPageSeo";
 import { BlockRenderer } from "components/BlockRenderer";
-import { getHomePage } from "../utils/getHomePage";
+
 import { getPageByUri } from "../utils/getPageByUri";
 import { notFound } from "next/navigation";
 
 export default async function Page() {
-  const data = await getHomePage("/");
+  const data = await getPageByUri("/");
 
   if (!data) {
     return notFound();

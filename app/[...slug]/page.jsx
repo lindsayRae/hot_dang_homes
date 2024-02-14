@@ -5,11 +5,11 @@ import { notFound } from "next/navigation";
 
 export default async function Page({ params }) {
   const data = await getPageByUri(`${params.slug.join("/")}`);
-  console.log("slug page data", data);
+  console.log("_________ data in slug page: ", data);
   if (!data) {
     return notFound();
   }
-  return <BlockRenderer blocks={data} />;
+  return <BlockRenderer blocks={data.blocks} />;
 }
 // export async function generateMetadata({ params }) {
 //   const seo = await getPageSeo(params.slug.join("/"));

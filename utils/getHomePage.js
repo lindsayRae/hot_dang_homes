@@ -1,5 +1,4 @@
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
-import { mapMainMenuItems } from "./mapMainMenuItems";
 
 export const getHomePage = async (uri) => {
   const params = {

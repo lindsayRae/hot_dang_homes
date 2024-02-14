@@ -1,12 +1,15 @@
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
 export const getPageByUri = async (uri) => {
-  console.log("**** getPageByUri", uri);
-
   const params = {
     query: `
     query PagesQuery($uri: String!) {
       nodeByUri(uri: $uri) {
         ... on Page {
+          id
+          title
+          blocks(postTemplate: false)
+        }
+        ... on Property {
           id
           title
           blocks(postTemplate: false)
@@ -27,11 +30,11 @@ export const getPageByUri = async (uri) => {
     },
   });
   const { data } = await response.json();
-  console.log("--- data from GET other pages: ", data);
+  console.log("--- data from getPageByUri: ", data);
   if (!data) {
     return null;
   }
 
   const blocks = cleanAndTransformBlocks(data.nodeByUri?.blocks || []);
-  return blocks;
+  return { blocks };
 };
