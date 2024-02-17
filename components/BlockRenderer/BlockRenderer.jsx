@@ -3,11 +3,11 @@ import { CallToActionButton } from "components/CallToActionButton";
 import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 
-// import { FormspreeForm } from "components/FormspreeForm";
+import { FormspreeForm } from "components/FormspreeForm";
 // import { Gallery } from "components/Gallery";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
-// import { PropertyFeatures } from "components/PropertyFeatures";
+import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
 // import { TickItem } from "components/TickItem";
 import Image from "next/image";
@@ -18,19 +18,18 @@ import { Cover } from "components/Cover";
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
-      // case "acf/propertyfeatures": {
-      //   return (
-      //     <p>Property Features</p>
-      //     //   <PropertyFeatures
-      //     //     key={block.id}
-      //     //     price={block.attributes.price}
-      //     //     bathrooms={block.attributes.bathrooms}
-      //     //     bedrooms={block.attributes.bedrooms}
-      //     //     hasParking={block.attributes.has_parking}
-      //     //     petFriendly={block.attributes.pet_friendly}
-      //     //   />
-      //   );
-      // }
+      case "acf/propertyfeatures": {
+        return (
+          <PropertyFeatures
+            key={block.id}
+            price={block.attributes.price}
+            bathrooms={block.attributes.bathrooms}
+            bedrooms={block.attributes.bedrooms}
+            hasParking={block.attributes.has_parking}
+            petFriendly={block.attributes.pet_friendly}
+          />
+        );
+      }
       // case "acf/tickitem": {
       //   return (
       //     <p>TickItem</p>
@@ -50,15 +49,14 @@ export const BlockRenderer = ({ blocks }) => {
       //     //   />
       //   );
       // }
-      // case "acf/formspreeform": {
-      //   return (
-      //     <p>FormSpreeForm</p>
-      //     //   <FormspreeForm
-      //     //     key={block.id}
-      //     //     formId={block.attributes.data.form_id}
-      //     //   />
-      //   );
-      // }
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
+      }
       case "acf/ctabutton": {
         return (
           <CallToActionButton

@@ -5,13 +5,9 @@ export const getPageByUri = async (uri) => {
     query PagesQuery($uri: String!) {
       nodeByUri(uri: $uri) {
         ... on Page {
-          id
-          title
           blocks(postTemplate: false)
         }
         ... on Property {
-          id
-          title
           blocks(postTemplate: false)
         }
       }
