@@ -26,7 +26,7 @@ export const getPageByUri = async (uri) => {
     },
   });
   const { data } = await response.json();
-  console.log("--- data from getPageByUri: ", data);
+
   if (!data) {
     return null;
   }

@@ -9,7 +9,7 @@ import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
-// import { TickItem } from "components/TickItem";
+import { TickItem } from "components/TickItem";
 import Image from "next/image";
 import { theme } from "theme";
 
@@ -30,14 +30,13 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-      // case "acf/tickitem": {
-      //   return (
-      //     <p>TickItem</p>
-      //     //   <TickItem key={block.id}>
-      //     //     <BlockRenderer blocks={block.innerBlocks} />
-      //     //   </TickItem>
-      //   );
-      // }
+      case "acf/tickitem": {
+        return (
+          <TickItem key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </TickItem>
+        );
+      }
       case "core/gallery": {
         return (
           <Gallery
@@ -107,7 +106,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/columns": {
-        console.log("COLUMNS - ", block.attributes);
         return (
           <Columns
             key={block.id}

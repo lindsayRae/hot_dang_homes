@@ -6,5 +6,6 @@ export const theme = {
   tertiary: "#F6F6F6",
   slate: "#1E293B",
   base: "#F9F9F9",
+  accent: "#CFCABE",
   "vivid-green-cyan": "#00d084",
 };
